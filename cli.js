@@ -70,6 +70,7 @@ function userInterview () {
 		.catch(err => errorMsg(`inquirer interview failed, \n${err}`));
 }
 
+
 /**
  * @function runSelected
  * run the npm scripts that were selected
@@ -84,6 +85,7 @@ function runSelected({selectedScripts}) {
 		errorMsg(`run-all failed, \n${err}`)
 	  });
 }
+
 
 /**
  * @function errorMsg
