@@ -1,7 +1,7 @@
 {
   "name": "select-run",
   "version": "1.0.0",
-  "description": "CLI to interactively select one or many npm scripts to run from package.json",
+  "description": "CLI to interactively select one or many package.json npm scripts to run",
   "main": "cli.js",
   "bin": {
     "select-run": "./cli.js"
