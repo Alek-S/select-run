@@ -14,20 +14,22 @@ const npmRunAll = require("npm-run-all");
 
 const packageJsonPath = path.join(process.cwd(), 'package.json');
 
+
 let packageJson;
 try{
 	packageJson = require(packageJsonPath);
 }
 catch(error) {
 	// no package.json found
-	errorMsg('package.json not found, you in the right directory?')
+	errorMsg('package.json could not be read, you in the right directory?')
 }
 
-console.log(chalk.gray(`path: ${packageJsonPath}\n`));
+console.log(chalk.gray(`path: ${packageJsonPath}\n`) );
 
 /* add checkbox-plus to inquirer prompt type */
 inquirer.registerPrompt('checkbox-plus', require('inquirer-checkbox-plus-prompt'));
 userInterview();
+
 
 
 /**
@@ -45,6 +47,7 @@ function userInterview () {
 			type:"checkbox-plus",
 			name: 'selectedScripts',
 			message:interviewMessage,
+			pageSize: 15,
 			highlight: true,
 			searchable: true,
 			source: (_answersSoFar, input) => {
@@ -71,20 +74,27 @@ function userInterview () {
 }
 
 
+
 /**
  * @function runSelected
  * run the npm scripts that were selected
  * @param {string[]} selectedScripts - keys of package.json scripts
  */
 function runSelected({selectedScripts}) {
-	console.log(selectedScripts)
-	npmRunAll(selectedScripts, {
-		stdout: process.stdout,
-		stderr: process.stderr
-	  }).catch(() => {
-		errorMsg(`run-all failed, \n${err}`)
-	  });
+	if( selectedScripts && selectedScripts.length > 0 ) {
+		console.log(`\n[ ${chalk.green('running selected scripts')} ]`)
+		npmRunAll(selectedScripts, {
+			stdout: process.stdout,
+			stderr: process.stderr
+			}).catch(() => {
+			errorMsg(`run-all failed, \n${err}`)
+			});
+	} else {
+		console.log(chalk.gray('nothing selected'));
+		process.exit(0);
+	}
 }
+
 
 
 /**

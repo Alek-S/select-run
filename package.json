@@ -1,7 +1,7 @@
 {
   "name": "select-run",
   "version": "1.0.0",
-  "description": "CLI to interactively select which npm scripts to run in parallel from package.json",
+  "description": "CLI to interactively select one or many npm scripts to run from package.json",
   "main": "cli.js",
   "bin": {
     "select-run": "./cli.js"
@@ -24,10 +24,10 @@
     "type": "git",
     "url": "git+https://github.com/Alek-S/select-run.git"
   },
-  "author": { 
-    "name" : "Alek Shnayder",
-    "url" : "https://alekshnayder.com/"
-    },
+  "author": {
+    "name": "Alek Shnayder",
+    "url": "https://alekshnayder.com/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Alek-S/select-run/issues"
