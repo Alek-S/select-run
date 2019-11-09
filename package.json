@@ -1,0 +1,19 @@
+{
+  "name": "select-run",
+  "version": "1.0.0",
+  "description": "Interactively select which npm scripts to run from package.json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alek-S/select-run.git"
+  },
+  "author": "Alek Shnayder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alek-S/select-run/issues"
+  },
+  "homepage": "https://github.com/Alek-S/select-run#readme"
+}
