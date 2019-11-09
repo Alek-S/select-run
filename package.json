@@ -4,7 +4,8 @@
   "description": "Interactively select which npm scripts to run from package.json",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Alek-S/select-run/issues"
   },
-  "homepage": "https://github.com/Alek-S/select-run#readme"
+  "homepage": "https://github.com/Alek-S/select-run#readme",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "inquirer": "^7.0.0"
+  }
 }
