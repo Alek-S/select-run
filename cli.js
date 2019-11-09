@@ -82,7 +82,7 @@ function runSelected({selectedScripts}) {
 		stdout: process.stdout,
 		stderr: process.stderr
 	  }).catch(() => {
-		errorMsg(`run-all failed, \n${err}`)
+			errorMsg(`run-all failed, \n${err}`);
 	  });
 }
 
