@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Interactively select which npm scripts to run from package.json",
   "main": "index.js",
+  "bin": {
+    "select-run": "./cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node cli.js",
-    "echo": "echo hello world",
-    "echo 2": "echo hello world 2"
   },
   "repository": {
     "type": "git",
