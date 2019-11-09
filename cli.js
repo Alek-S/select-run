@@ -1,7 +1,16 @@
+#!/usr/bin/env node
+
+/**
+ * @author Alek Shnayder
+ * See LICENSE file in root directory for full license.
+ */
+"use strict"
+
 const chalk = require('chalk');
 const fuzzy = require('fuzzy')
 const path = require('path');
 const inquirer = require('inquirer');
+const npmRunAll = require("npm-run-all");
 
 const packageJsonPath = path.join(process.cwd(), 'package.json');
 
@@ -21,8 +30,10 @@ inquirer.registerPrompt('checkbox-plus', require('inquirer-checkbox-plus-prompt'
 userInterview();
 
 
-
-/* start the user interview with checkbox multi-select*/
+/**
+ * @function userInterview
+ * start the user interview with checkbox multi-select
+ */
 function userInterview () {
 	const interviewMessage = 
 		`Select scripts -- (Press ${chalk.cyan('<space>')} to select,` + 
@@ -59,12 +70,27 @@ function userInterview () {
 		.catch(err => errorMsg(`inquirer interview failed, \n${err}`));
 }
 
-
+/**
+ * @function runSelected
+ * run the npm scripts that were selected
+ * @param {string[]} selectedScripts - keys of package.json scripts
+ */
 function runSelected({selectedScripts}) {
 	console.log(selectedScripts)
+	npmRunAll(selectedScripts, {
+		stdout: process.stdout,
+		stderr: process.stderr
+	  }).catch(() => {
+		errorMsg(`run-all failed, \n${err}`)
+	  });
 }
 
-/* give user error messages */
+/**
+ * @function errorMsg
+ * give user error messages
+ * @param {string} msg - message to be logged out
+ * @param {boolean} exit - if should exit after message, default true
+ */
 function errorMsg (msg, exit = true) {
 	console.error(chalk.red(`Error! ${msg}`));
 	exit && process.exit(1);
