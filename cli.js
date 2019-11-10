@@ -40,7 +40,7 @@ function userInterview () {
 	const interviewMessage =
 		`Select scripts -- (Press ${chalk.cyan('<space>')} to select,` +
 		` ${chalk.cyan('<return>')} to complete)` +
-		`\nfilter: `;
+		`\n${chalk.yellow('filter')}: `;
 
 	inquirer
 		.prompt({
