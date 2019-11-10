@@ -53,16 +53,11 @@ function userInterview () {
 			source: (_answersSoFar, input) => {
 				input = input || '';
 
-				return new Promise(function(resolve) {
-
+				return new Promise((resolve) => {
 				const fuzzyResult = fuzzy.filter(input, Object.keys(packageJson.scripts));
-
-				const data = fuzzyResult.map(function(element) {
-					return element.original;
-				});
+				const data = fuzzyResult.map(element => element.original);
 
 				resolve(data);
-
 				});
 			},
 			choices: Object.keys(packageJson.scripts)
