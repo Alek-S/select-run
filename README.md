@@ -1,4 +1,5 @@
 # 💻🏃‍♂️ select-run 
+[![npm version](https://badge.fury.io/js/select-run.svg)](https://badge.fury.io/js/select-run)
 
 A CLI tool to interactively select one or many package.json npm scripts to run
 
