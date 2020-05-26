@@ -11,9 +11,14 @@ const fuzzy = require('fuzzy')
 const path = require('path');
 const inquirer = require('inquirer');
 const npmRunAll = require("npm-run-all");
+let args;
 
 const packageJsonPath = path.join(process.cwd(), 'package.json');
 
+if(process.argv.length > 2){
+	args = process.argv.slice(2)[0];
+	console.log(chalk.yellow('Pre-filtered on:'), args);
+}
 
 let packageJson;
 try{
@@ -50,13 +55,12 @@ function userInterview () {
 			pageSize: 15,
 			highlight: true,
 			searchable: true,
+			default: [args],
 			source: (_answersSoFar, input) => {
-				input = input || '';
-
+				input = input || (args ? args : '');
 				return new Promise((resolve) => {
 				const fuzzyResult = fuzzy.filter(input, Object.keys(packageJson.scripts));
 				const data = fuzzyResult.map(element => element.original);
-
 				resolve(data);
 				});
 			},
