@@ -85,7 +85,7 @@ function runSelected({selectedScripts}) {
 		npmRunAll(selectedScripts, {
 			stdout: process.stdout,
 			stderr: process.stderr
-			}).catch(() => {
+			}).catch((err) => {
 			errorMsg(`run-all failed, \n${err}`)
 			});
 	} else {
