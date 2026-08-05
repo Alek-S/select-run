@@ -6,6 +6,7 @@
  */
 "use strict"
 
+const { execSync } = require('child_process');
 const chalk = require('chalk');
 const fuzzy = require('fuzzy')
 const path = require('path');
@@ -82,6 +83,9 @@ function userInterview () {
 function runSelected({selectedScripts}) {
 	if( selectedScripts && selectedScripts.length > 0 ) {
 		console.log(`\n[ ${chalk.green('running selected scripts')} ]`)
+		try {
+			execSync(`history -s "npm run ${selectedScripts.join(' ')}"`, { stdio: 'ignore' });
+		} catch (e) {}
 		npmRunAll(selectedScripts, {
 			stdout: process.stdout,
 			stderr: process.stderr
